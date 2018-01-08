@@ -25,6 +25,9 @@ Rails.application.configure do
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
+  
+  config.action_mailer.raise_delivery_errors = true                             # had to add entire line here not comment in
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
@@ -36,6 +39,20 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  
+  config.action_mailer.default_url_options = { :host => 'https://new-rails-project-dustin.c9users.io' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.mailgun.org',
+    :port                 => 3000,
+    :domain               => ENV['sandbox92b8758e6cbd44b6bfabc0a3566fc839.mailgun.org'],
+    :user_name            => ENV['dustin'],
+    :password             => ENV['4620janice'],
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl =>false
+  }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

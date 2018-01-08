@@ -20,6 +20,7 @@
  gem 'turbolinks'
  gem 'bootstrap'
  gem 'figaro'
+ gem 'devise'
 
  group :development, :test do
    gem 'byebug'
@@ -27,6 +28,6 @@
    gem 'rspec-rails'
    gem 'shoulda'
    gem 'faker'
-   gem 'factory_girl_rails'
+   gem 'factory_bot'
    gem 'pry-rails'
  end
