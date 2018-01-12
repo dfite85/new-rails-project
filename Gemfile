@@ -18,9 +18,10 @@
  gem 'coffee-rails', '~> 4.1.0'
  gem 'jquery-rails'
  gem 'turbolinks'
- gem 'bootstrap'
+ gem 'bootstrap-sass'
  gem 'figaro'
  gem 'devise'
+ gem 'pundit'                                                                   #ive been putting this in console for 10 mins wondering why it wouldnt install.
 
  group :development, :test do
    gem 'byebug'

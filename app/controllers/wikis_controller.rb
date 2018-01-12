@@ -1,7 +1,9 @@
 class WikisController < ApplicationController
-                                                                                #if i had a dollar for every time i typed wookie instead of wiki
+                                                                                #if i had a dollar for every time i typed wookie instead of wiki.. I should change it, but Disney might sue me.
+                                                                                #the ReadMe.md was killer for helping with the @wiki info
     def index
         @wikis = Wiki.all                                                       #this S kicked my ass for abit
+        authorize @wiki                                                         #i need some authorize shit to happen here so non-cool sobs canna view the index 
     end
     
     def show
@@ -10,12 +12,15 @@ class WikisController < ApplicationController
     
     def new
         @wiki = Wiki.new
+        authorize @wiki                                                         #not sure i need one here but why not
     end
     
     def create
         @wiki = Wiki.new
-        @wiki.tilte = params[:wiki][:title]
+        @wiki.title = params[:wiki][:title]                                     #corrected error to spelling of title
         @wiki.body = params[:wiki][:body]
+        @wiki.user = current_user
+        authorize @wiki                                                         #authorizes current user to create 
         
         if @wiki.save
             flash[:notice] = "Your shit was saved."                             #haha i missed these
@@ -29,6 +34,7 @@ class WikisController < ApplicationController
     
     def edit
         @wiki = Wiki.find(params[:id])
+        authorize @wiki                                                         #need some authorize shit here to so unallowed fellows cannot edit a post
     end
     
     def update
@@ -39,6 +45,7 @@ class WikisController < ApplicationController
     
     def destroy
         @wiki = Wiki.find(params[:id])
+        authorize @wiki                                                         #authorize to destroy wiki
         
         if @wiki.destroy
             flash[:notice] = "\"#{@wiki.title}\" was obliterated!"
