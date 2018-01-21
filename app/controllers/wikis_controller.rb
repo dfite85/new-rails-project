@@ -3,7 +3,7 @@ class WikisController < ApplicationController
                                                                                 #the ReadMe.md was killer for helping with the @wiki info
     def index
         @wikis = Wiki.all                                                       #this S kicked my ass for abit
-        authorize @wiki                                                         #i need some authorize shit to happen here so non-cool sobs canna view the index 
+        #authorize @wikis                                                      #i need some authorize shit to happen here so non-cool sobs canna view the index 
     end
     
     def show
@@ -12,7 +12,7 @@ class WikisController < ApplicationController
     
     def new
         @wiki = Wiki.new
-        authorize @wiki                                                         #not sure i need one here but why not
+        #authorize @wikis                                                       #not sure i need one here but why not
     end
     
     def create
@@ -20,7 +20,7 @@ class WikisController < ApplicationController
         @wiki.title = params[:wiki][:title]                                     #corrected error to spelling of title
         @wiki.body = params[:wiki][:body]
         @wiki.user = current_user
-        authorize @wiki                                                         #authorizes current user to create 
+        #authorize @wikis                                                       #authorizes current user to create 
         
         if @wiki.save
             flash[:notice] = "Your shit was saved."                             #haha i missed these
@@ -34,7 +34,7 @@ class WikisController < ApplicationController
     
     def edit
         @wiki = Wiki.find(params[:id])
-        authorize @wiki                                                         #need some authorize shit here to so unallowed fellows cannot edit a post
+        #authorize @wikis                                                       #need some authorize shit here to so unallowed fellows cannot edit a post
     end
     
     def update
@@ -45,7 +45,7 @@ class WikisController < ApplicationController
     
     def destroy
         @wiki = Wiki.find(params[:id])
-        authorize @wiki                                                         #authorize to destroy wiki
+        #authorize @wikis                                                       #authorize to destroy wiki
         
         if @wiki.destroy
             flash[:notice] = "\"#{@wiki.title}\" was obliterated!"
