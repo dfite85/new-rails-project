@@ -5,11 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :wikis                                                               #expect more than one wiki post
-  
-
-  
-  
-  enum role: [:standard, :premium, :admin]                                    #just read up and kinda remembered this crap
+                                     #just read up and kinda remembered this crap
   
 
 end

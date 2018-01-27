@@ -17,10 +17,10 @@ class WikisController < ApplicationController
     
     def create
         @wiki = Wiki.new
-        @wiki.title = params[:wiki][:title]                                     #corrected error to spelling of title
+        @wiki.title = params[:wiki][:title]
         @wiki.body = params[:wiki][:body]
         @wiki.user = current_user
-        #authorize @wikis                                                       #authorizes current user to create 
+        #authorize @wiki                                                          #authorizes current user to create 
         
         if @wiki.save
             flash[:notice] = "Your shit was saved."                             #haha i missed these
