@@ -2,6 +2,7 @@
  
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
  gem 'rails', '4.2.5'
+ gem 'stripe'
  
  group :production do
    gem 'pg'
@@ -22,7 +23,7 @@
  gem 'figaro'
  gem 'devise'
  gem 'pundit'                                                                   #ive been putting this in console for 10 mins wondering why it wouldnt install.
-
+ 
  group :development, :test do
    gem 'byebug'
    gem 'spring'

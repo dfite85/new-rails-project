@@ -3,9 +3,18 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
   has_many :wikis                                                               #expect more than one wiki post
-                                     #just read up and kinda remembered this crap
   
+  
+  
+  
+  #enum role: [:standard, :admin, :premium]
+  def admin?
+    self.role == 'admin'
+  end  
+  
+  def premium?
+    self.role == 'premium'
+  end
 
 end
