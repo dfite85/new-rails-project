@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
             currency: 'usd'
         )
         
-        current_user.update_attribute(:role, 1)
+        current_user.update_attribute(:role, 'premium')
         
         
         flash[:notice] = "#{current_user.email} paid up!"

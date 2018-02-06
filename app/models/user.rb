@@ -16,5 +16,13 @@ class User < ActiveRecord::Base
   def premium?
     self.role == 'premium'
   end
+  
+  def standard?
+    self.role == 'standard'
+  end
+  
+  def going_public
+    self.wikis.each { |wiki| puts wiki.publicize }
+  end
 
 end

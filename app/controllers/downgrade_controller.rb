@@ -4,8 +4,13 @@ class DowngradeController < ApplicationController
     end
     
     def create
-        current_user.update_attribute(:standard, true)
-        current_user.update_attribute(:premium, false)
+        
+        current_user.update_attribute(:role, 'standard')
+        wikis = Wiki.all
+        wikis.each do |wiki|
+        	wiki.update_attribute(:private, false)
+        	
+        end
         
         flash[:notice] = "You are no longer awesome!."
         

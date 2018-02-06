@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180119011810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.boolean  "private"
   end
 
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"
