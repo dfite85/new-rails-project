@@ -1,5 +1,51 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+RSpec.describe User, :type => :model do
+   let(:user) {User.create!(email: "fake@fakemail.com", password: "password", role: 'standard')}
+  describe "Users" do
+     
+      
+      describe "attributes" do
+          it "has an email and password" do
+              expect(user).to have_attributes(email: "fake@fakemail.com", password: "password", role: 'standard')
+          end
+      end
+  end
+  
+     it "responds to role" do
+       expect(user).to respond_to(:role)
+     end
+ 
+     it "responds to admin?" do
+       expect(user).to respond_to(:admin?)
+     end
+ 
+     it "responds to standard?" do
+       expect(user).to respond_to(:standard?)
+     end
+     
+     it "responds to premium?" do
+       expect(user).to respond_to(:premium?)
+   end
+
+   describe "roles" do
+
+     it "is standard by default" do
+       expect(user.role).to eql("standard")
+     end
+ 
+     context "standard user" do
+       it "returns true for #standard?" do
+         expect(user.standard?).to be_truthy
+       end
+ 
+       it "returns false for #admin?" do
+         expect(user.admin?).to be_falsey
+       end
+       
+       it "returns false for #premium" do
+         expect(user.premium?).to be_falsey
+     end
+   end
+ end
+ end
