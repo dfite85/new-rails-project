@@ -12,4 +12,5 @@ module WikisHelper
     def user_is_authorized_to_delete?                                           #def authorised to delete
         current_user && (current_user == @wiki.user || current_user.admin?)     #post owner & admin
     end
+    
 end

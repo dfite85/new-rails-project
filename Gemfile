@@ -24,6 +24,7 @@
  gem 'figaro'
  gem 'devise'
  gem 'pundit'                                                                   #ive been putting this in console for 10 mins wondering why it wouldnt install.
+ gem 'redcarpet'
  
  group :development, :test do
    gem 'byebug'
