@@ -2,7 +2,14 @@
 <h1><%= @wiki.title %></h1>                                                     <!-- call the title of the wiki -->
 <div class="row">
     <div class="col-md-8">
-        <p><%= link_to markdown(@wiki.body) %></p>
+        <p><%= markdown(@wiki.body) %></p>
+        <p>Created by <%= @wiki.user.email %></p>
+        <p>Collaborators:
+            <% unless @wiki.collaborators.empty? %>
+                <% @wiki.collaborators.each do |collaborator| %>
+                    <p><%= collaborator.email %></p>
+                <% end %>
+            <% end %></p>
     </div>
     <div class="col-md-4">
         <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>

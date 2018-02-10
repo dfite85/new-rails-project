@@ -5,7 +5,7 @@ class WikisController < ApplicationController
                                                                                 #if i had a dollar for every time i typed wookie instead of wiki.. I should change it, but Disney might sue me.
                                                                                 #the ReadMe.md was killer for helping with the @wiki info
     def index
-        @wikis = Wiki.visible_to(current_user)                                  #this S kicked my ass
+        @wikis = policy_scope(Wiki)                                             #this S kicked my ass
     end
     
     def show
