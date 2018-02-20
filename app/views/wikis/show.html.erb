@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-8">
         <p><%= markdown(@wiki.body) %></p>
-        <p>Created by <%= @wiki.user.email %></p>
+        <p>Created by <%= @wiki.user %></p>
         <p>Collaborators:
             <% unless @wiki.collaborators.empty? %>
                 <% @wiki.collaborators.each do |collaborator| %>
