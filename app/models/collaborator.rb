@@ -1,7 +1,8 @@
 class Collaborator < ActiveRecord::Base
-    
-    belongs_to :wiki
     belongs_to :user
+    belongs_to :wiki
+    
+    
     
     def self.update_collaborators(collaborator_string)
         return Collaborator.none if collaborator_string.blank?                  #when colaborator returns a sting that is blank make it say none

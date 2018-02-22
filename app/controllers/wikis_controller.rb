@@ -15,7 +15,7 @@ class WikisController < ApplicationController
             @wiki.collaborators.each do |collaborator|
                 collaborators << collaborator.email
         end
-        unless (@wiki.private == false) || (@wiki.private == nil) || collaborators.include?(current_user.email) || current_user.admin?
+        unless (@wiki.private == false) || @wiki.user == current_user || collaborators.include?(current_user.email) || current_user.admin?
             flash[:alert] = "You are not authorized to view this wiki."
             redirect_to new_charge_path
         end
@@ -72,6 +72,7 @@ class WikisController < ApplicationController
     end
     
     private 
+    
     def wiki_params
         params.require(:wiki).permit(:title, :body, :private)
     end
