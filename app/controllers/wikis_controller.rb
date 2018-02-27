@@ -49,7 +49,6 @@ class WikisController < ApplicationController
     
     def edit
         @wiki = Wiki.find(params[:id])
-        #authorize @wikis                                                       #need some authorize shit here to so unallowed fellows cannot edit a post
     end
     
     def update
@@ -59,7 +58,6 @@ class WikisController < ApplicationController
     
     def destroy
         @wiki = Wiki.find(params[:id])
-        #authorize @wikis                                                       #authorize to destroy wiki
         
         if @wiki.destroy
             flash[:notice] = "\"#{@wiki.title}\" was obliterated!"

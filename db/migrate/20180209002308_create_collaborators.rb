@@ -12,6 +12,6 @@ class CreateCollaborators < ActiveRecord::Migration
     
     add_index :users, :id, unique: true
     add_index :wikis, :id, unique: true
-    add_index :collaborators, :id, unique: true
+    
   end
 end
