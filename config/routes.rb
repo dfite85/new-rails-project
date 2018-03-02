@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborators do
+      member do
+        delete :remove_from_wiki
+      end  
+    end  
+  end  
   resources :charges, only: [:new, :create]
   resources :downgrade, only: [:new, :create]
 

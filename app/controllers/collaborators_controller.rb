@@ -1,15 +1,9 @@
-
+include ApplicationHelper
 class CollaboratorsController < ApplicationController
+  def destroy
+    wiki = Wiki.find(params[:wiki_id])
+    wiki.collaborators.delete(params[:collaborator_id])
     
-def destroy
-    @collaborator = Collaborator.find(params[:id])
-
-    if @collaborator.destroy
-      flash[:notice] = "You removed a collaborator"
-    else
-      flash[:error] = "There was a problem removing this collaborator"
-    end
-
-    redirect_to wiki_collaborators_path(@wiki)
-end
+    redirect_to wiki
+  end
 end

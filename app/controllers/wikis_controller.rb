@@ -2,10 +2,9 @@
 include ApplicationHelper
 
 class WikisController < ApplicationController
-                                                                                #if i had a dollar for every time i typed wookie instead of wiki.. I should change it, but Disney might sue me.
-                                                                                #the ReadMe.md was killer for helping with the @wiki info
+
     def index
-        @wikis = policy_scope(Wiki)                                             #the lesson wants this done
+        @wikis = policy_scope(Wiki)
     end
     
     def show
@@ -27,23 +26,20 @@ class WikisController < ApplicationController
     
     def new
         @wiki = Wiki.new
-        #authorize @wikis                                                       #not sure i need one here but why not
     end
     
     def create
         @wiki = Wiki.new(wiki_params)
         @wiki.user = current_user
         
-        #authorize @wiki                                                        #authorizes current user to create 
-        
         if @wiki.save
             @wiki.collaborators = Collaborator.update_collaborators(params[:wiki][:collaborators])
-            flash[:notice] = "Your shit was saved."                             #haha i missed these
-            redirect_to @wiki                                                   #redirect back to wiki
+            flash[:notice] = "Your shit was saved."
+            redirect_to @wiki
             
-        else                                                                    #did not save
-            flash.now[:alert] = "Your shit was not saved."                      #alert
-            render :new                                                         #back to a new wiki to try again
+        else
+            flash.now[:alert] = "Your shit was not saved."
+            render :new
         end
     end
     
