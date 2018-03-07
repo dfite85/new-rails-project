@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :wikis do
     resources :collaborators do
       member do
-        delete :remove_from_wiki
+        
       end  
     end  
   end  
